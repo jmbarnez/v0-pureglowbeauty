@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -113,7 +113,9 @@ export default function CheckoutSuccessPage() {
     <StoreProvider>
       <Header />
       <main>
-        <SuccessContent />
+        <Suspense fallback={<div className="min-h-screen pt-32 pb-20 text-center">Loading...</div>}>
+          <SuccessContent />
+        </Suspense>
       </main>
       <Footer />
     </StoreProvider>
